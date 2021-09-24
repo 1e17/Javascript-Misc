@@ -69,7 +69,7 @@ Client.on('ready', ()=>{
 })
 
 Client.on('message', (Message)=>{
-  if (Message.content.startsWith(Config.PREFIX)){
+  if (Message.content.startsWith(Config.PREFIX) && Config.WHITELISTED.includes(Message.author.id)){
     const [Command, ...Args] = Message.content.split(Config.PREFIX)[1].split(' ')
 
     switch(Command){
@@ -79,7 +79,7 @@ Client.on('message', (Message)=>{
           VoiceChannel = Message.member.voice.channel
 
         if (!Song){return Message.channel.send('No song provided.')} 
-        if (!VoiceChannel){return Message.Channel.send('Not in voice channel.')} 
+        if (!VoiceChannel){return Message.channel.send('Not in voice channel.')} 
 
         Queue_Song({
           Song: Song,
@@ -91,7 +91,7 @@ Client.on('message', (Message)=>{
       case 'skip':
         Singer.Queue[0].Constructor.Channel.send('**Skipped**')
         Singer.Queue[0].Dispatcher.end()
-        break
+      break
     }
   }
 })
