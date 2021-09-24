@@ -69,7 +69,7 @@ Client.on('ready', ()=>{
 })
 
 Client.on('message', (Message)=>{
-  if (Message.content.startsWith(Config.PREFIX) && Config.WHITELISTED.includes(Message.author.id)){
+  if (Message.content.startsWith(Config.PREFIX) && !Message.guild == null && Config.WHITELISTED.includes(Message.author.id)){
     const [Command, ...Args] = Message.content.split(Config.PREFIX)[1].split(' ')
 
     switch(Command){
