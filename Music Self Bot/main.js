@@ -29,7 +29,7 @@ const
       Song.Channel.send(`🎶 Now playing: **${Song.Title}**. Requested by: **${Song.Asker.username}.**`)
       Singer.Queue[0] = {Constructor: Song, Dispatcher: Dispatcher.play(Song.Audio).on('finish', function(){
         Singer.Queue.shift()
-        if (Singer.Queue.length > 0){Singer.Play_Song()} else {Singer.Singing = false}
+        if (Singer.Queue.length > 0){Play()} else {Singer.Singing = false}
       })}
     })
   }
