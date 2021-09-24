@@ -87,8 +87,11 @@ Client.on('message', (Message)=>{
           Voice: VoiceChannel,
           Channel: Message.channel
         })
-
-      break 
+      break
+      case 'skip':
+        Singer.Queue[0].Constructor.Channel.send('**Skipped**')
+        Singer.Queue[0].Dispatcher.end()
+        break
     }
   }
 })
