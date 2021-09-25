@@ -71,8 +71,8 @@ module.exports = {
       Channel = Data.Channel
       VoiceChannel = Data.Voice
 
-    if (!Song){return Channel.send('No song provided.')} 
-    if (!VoiceChannel){return Channel.send('Not in voice channel.')} 
+    if (!Song){return Channel.send('**No song provided.**')} 
+    if (!VoiceChannel){return Channel.send('**Not in voice channel.**')} 
 
     Queue_Song({
       Song: Song,
@@ -95,6 +95,18 @@ module.exports = {
       Data.Channel.send('**Shuffled.**')
     } else {
       Data.Channel.send('**No songs to shuffle.**')
+    }
+  },
+
+  Handle_Queue: async function(Data){
+    if (Singer.Queue.length > 0){
+      let QueueString = ""
+      for (let i=1;i<Singer.Queue.length;++i){
+        QueueString = QueueString + (`${i}. ${Singer.Queue[i].Title} \n`)
+      };QueueString = '```\n' + QueueString + '```'
+      Data.Channel.send(QueueString)
+    } else {
+      Data.Channel.send('**No songs in queue.**')
     }
   }
 }
