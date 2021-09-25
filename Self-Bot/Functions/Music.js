@@ -24,7 +24,7 @@ const
     })
   }
 
-  Get_Info = async function(Song){
+  Get_Info = async (Song) => {
     if (Ytdl.validateURL(Song)) {
       return await Ytdl.getInfo(Song)
     } else {
@@ -37,7 +37,7 @@ const
     }
   }
 
-  Queue_Song = async function(SongData){
+  Queue_Song = async (SongData) => {
     const VideoInfo = await Get_Info(SongData.Song)
     const Audio = Ytdl(VideoInfo.videoDetails.video_url, {filter: 'audioonly'})
     const Constructor = {
@@ -53,7 +53,7 @@ const
     if (!Singer.Singing) {Play().catch((Fuck) => {console.log('Play Function: ' + Fuck)})}
   }
 
-  Shuffle_Array = function(array) { 
+  Shuffle_Array = (array) => { 
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         let temp = array[i];
@@ -63,9 +63,9 @@ const
     return array
   }
   
-
+// Exports
 module.exports = {
-  Handle_Play: async function(Data){
+  play: async (Data) => {
     const 
       Song = Data.Args.join(' ')
       Channel = Data.Channel
@@ -82,23 +82,23 @@ module.exports = {
     })
   },
   
-  Handle_Skip: async function(){
+  skip: async () => {
     Singer.Queue[0].Constructor.Channel.send('**Skipped.**')
     Singer.Queue[0].Dispatcher.end()
   },
 
-  Handle_Shuffle: async function(Data){
+  shuffle: async () => {
     if (Singer.Queue.length > 0){          
       const Current = Singer.Queue.shift()
       Singer.Queue = Shuffle_Array(Singer.Queue)
       Singer.Queue.unshift(Current)
       Data.Channel.send('**Shuffled.**')
     } else {
-      Data.Channel.send('**No songs to shuffle.**')
+      Data.Channel.send('**No songs to shuffle.**ww')
     }
   },
 
-  Handle_Queue: async function(Data){
+  queue: async () => {
     if (Singer.Queue.length > 0){
       let QueueString = ""
       for (let i=1;i<Singer.Queue.length;++i){
