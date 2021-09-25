@@ -1,7 +1,7 @@
 
 // Packages
 const 
-  Discord = require('discord.js-selfbot')
+  Discord = require('discord.js-selfbot') 
   Music = require('./Functions/Music.js')
   Fs = require('fs')
 
@@ -68,6 +68,10 @@ Client.on('message', (Message)=>{
 
       case 'shuffle':
         Music.Handle_Shuffle({Channel:Message.channel})
+      break
+
+      case 'queue':
+        Music.Handle_Queue({Channel:Message.channel})
       break
     }
   }
