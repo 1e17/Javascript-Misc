@@ -7,11 +7,11 @@ const
 // Music Functions
 const 
   Singer = {
-    Singing: false,
+    Singing: false, 
     Queue: []
   }
 
-  Play = async ()=>{
+  Play = ()=> {
     const Song = Singer.Queue[0]
     Singer.Singing = true 
 
@@ -65,7 +65,7 @@ const
   
 // Exports
 module.exports = {
-  play: async (Data) => {
+  play: (Data) => {
     const 
       Song = Data.Args.join(' ')
       Channel = Data.Channel
@@ -82,12 +82,12 @@ module.exports = {
     })
   },
   
-  skip: async () => {
+  skip: () => {
     Singer.Queue[0].Constructor.Channel.send('**Skipped.**')
     Singer.Queue[0].Dispatcher.end()
   },
 
-  shuffle: async () => {
+  shuffle: () => {
     if (Singer.Queue.length > 0){          
       const Current = Singer.Queue.shift()
       Singer.Queue = Shuffle_Array(Singer.Queue)
@@ -98,7 +98,7 @@ module.exports = {
     }
   },
 
-  queue: async () => {
+  queue: () => {
     if (Singer.Queue.length > 0){
       let QueueString = ""
       for (let i=1;i<Singer.Queue.length;++i){
