@@ -2,11 +2,6 @@
 // Packages
 const Fs = require('fs')
 
-// Declarations
-global.Config = null
-if (!Fs.existsSync('./config.cfg')){return console.log("Config doesn't exist. (▀̿Ĺ̯▀̿ ̿)")}
-Config = JSON.parse(Fs.readFileSync('./config.cfg'))
-
 // Functions
 const 
   Save_Config = ()=> {
