@@ -1,18 +1,16 @@
 
 // Packages
-const 
-  Discord = require('discord.js-selfbot') 
-  Fs = require('fs')
+const Discord = require('discord.js-selfbot') 
+const Fs = require('fs')
 
 // Config Loader 
 if (!Fs.existsSync('./config.cfg')){return console.log("Config doesn't exist. (▀̿Ĺ̯▀̿ ̿)")}
 global.Config = JSON.parse(Fs.readFileSync('./config.cfg'))
 
 // Declarations 
-const
-  Client = new Discord.Client()
-  Commands = []
-  Load_Command_Set = (Export) => {for (i of Object.keys(Export)){Commands[i] = Export[i]}}
+const Client = new Discord.Client()
+const Commands = []
+const Load_Command_Set = (Export) => {for (i of Object.keys(Export)){Commands[i] = Export[i]}}
 
 // Load Commands 
 Fs.readdir(__dirname+'\\Functions', (Error,Files) => {
