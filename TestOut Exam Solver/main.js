@@ -1,3 +1,4 @@
+console.log('executed')
 // Declarations
 let NextButton = document.getElementsByClassName('LSButton-content LSButton-Light-content')
 
@@ -7,8 +8,6 @@ for (i of NextButton) {
         NextButton = i 
     }
 }
-
-console.log(NextButton)
 
 // Functions 
 const SelectAnswers = function() {
